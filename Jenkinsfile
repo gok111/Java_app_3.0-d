@@ -73,6 +73,31 @@ pipeline{
                }
             }
         }
+        stage('Jfrog connect'){
+         when { expression {  params.action == 'create' } }
+            steps{
+                rtServer (
+                 id: 'Artifactory-1',
+                url: 'http://my-artifactory-domain/artifactory',
+                  username: 'user',
+                  password: 'password',
+                      )
+                    }
+                }   
+        stage ('Upload') {
+            steps {
+                rtUpload (
+                     spec: """{
+                            "files": [
+                                    {
+                                        "pattern": "jenkins-examples/pipeline-examples/resources/ArtifactoryPipeline.zip",
+                                        "target": "libs-snapshot-local",
+                                     }
+                                      ]
+                              }"""
+                          )
+                }
+            }
         stage('Docker Image Build'){
          when { expression {  params.action == 'create' } }
             steps{
