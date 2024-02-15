@@ -83,7 +83,7 @@ pipeline{
                   password: 'password',
                       )
                     }
-*/                }   
+               }   
         stage ('Upload') {
             steps {
                 rtUpload (
@@ -97,7 +97,7 @@ pipeline{
                               }"""
                           )
                 }
-            }
+     */       }
         stage('Docker Image Build'){
          when { expression {  params.action == 'create' } }
             steps{
