@@ -73,7 +73,7 @@ pipeline{
                }
             }
         }
-        stage('Jfrog connect'){
+     /*   stage('Jfrog connect'){
          when { expression {  params.action == 'create' } }
             steps{
                 rtServer (
@@ -83,7 +83,7 @@ pipeline{
                   password: 'password',
                       )
                     }
-                }   
+*/                }   
         stage ('Upload') {
             steps {
                 rtUpload (
