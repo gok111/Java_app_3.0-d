@@ -97,7 +97,7 @@ pipeline{
                               }"""
                           )
                 }
-     */       }
+            }*/
         stage('Docker Image Build'){
          when { expression {  params.action == 'create' } }
             steps{
@@ -107,7 +107,7 @@ pipeline{
                }
             }
         }
-         stage('Docker Image Scan: trivy '){
+       /*  stage('Docker Image Scan: trivy '){
          when { expression {  params.action == 'create' } }
             steps{
                script{
@@ -115,7 +115,7 @@ pipeline{
                    dockerImageScan("${params.ImageName}","${params.ImageTag}","${params.DockerHubUser}")
                }
             }
-        }
+        }*/
         stage('Docker Image Push : DockerHub '){
          when { expression {  params.action == 'create' } }
             steps{
